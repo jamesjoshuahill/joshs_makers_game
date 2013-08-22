@@ -19,12 +19,13 @@ def make_your_move(choices)
 		next_move = prompt
 		choices.each do |choice, fate|
 			if next_move.include?(choice)
-				fate_method, fate_argument = fate
-				if fate_argument.nil?
-					return send(fate_method)
-				else
-					return send(fate_method, fate_argument)
-				end
+				send(*fate)
+				# fate_method, fate_argument = fate
+				# if fate_argument.nil?
+				# 	return send(fate_method)
+				# else
+				# 	return send(fate_method, fate_argument)
+				# end
 			end
 		end
 		input_attempts += 1
