@@ -14,17 +14,24 @@ def start_game()
 end
 
 def make_your_move(choices)
-	next_move = prompt
-	choices.each do |choice, fate|
-		if choice == "else" || next_move.include?(choice)
-			fate_method, fate_argument = fate
-			if fate_argument.nil?
-				return send(fate_method)
-			else
-				return send(fate_method, fate_argument)
+	input_attempts = 0
+	while input_attempts < 3
+		next_move = prompt
+		choices.each do |choice, fate|
+			if next_move.include?(choice)
+				fate_method, fate_argument = fate
+				if fate_argument.nil?
+					return send(fate_method)
+				else
+					return send(fate_method, fate_argument)
+				end
 			end
 		end
+		input_attempts += 1
+		puts ["Huh?","Say again?","Er..?"].sample
 	end
+	puts("You're mumbling...")
+	end_game("You wander aimslessly until you find a trendy cafe and\nplay on your laptop for the rest of the day.")
 end
 
 def outside()
@@ -39,7 +46,6 @@ Do you want to go in?
 }
 	make_your_move({
 		"in" => ["lobby"],
-		"else" => ["end_game", "You wander until you find a trendy cafe and\nplay on your laptop for the rest of the day."]
 	})
 	#next_move = prompt
 	#if next_move.include? "in"
@@ -61,8 +67,7 @@ Do you want to take the stairs or the lift?
 }
 	make_your_move({
 		"stairs" => ["stairs"],
-		"lift" => ["lift_wait"],
-		"else" => ["lobby"]
+		"lift" => ["lift_wait"]
 	})
 	#next_move = prompt()
 	#if next_move.include? "stairs"
@@ -103,8 +108,7 @@ Do you want to wait for a lift, or take the stairs?
 }
 	make_your_move({
 		"wait" => ["lift_up"],
-		"stairs" => ["stairs"],
-		"else" => ["lift_wait"]
+		"stairs" => ["stairs"]
 	})
 end
 
@@ -132,8 +136,7 @@ Rob Johnson is at reception, do you say hi or run away?
 }
 	make_your_move({
 		"hi" => ["ping_pong"],
-		"run" => ["end_game", "You run away.\nWhen you get home you play on your laptop until the wee hours.\nBetter luck next time."],
-		"else" => ["reception"]
+		"run" => ["end_game", "You run away.\nWhen you get home you play on your laptop until the wee hours.\nBetter luck next time."]
 	})
 	#next_move = prompt()
 	#if next_move.include? "hi"
@@ -156,8 +159,7 @@ Rob asks 'do you know how to play?'
 }
 	make_your_move({
 		"yes" => ["end_game", "You play well, but the house rules catch you out.\nRob wins."],
-		"no" => ["end_game", "You play badly, but DANGER PONG rules in your favour.\nYou win!"],
-		"else" => ["ping_pong"]
+		"no" => ["end_game", "You play badly, but DANGER PONG rules in your favour.\nYou win!"]
 	})
 end
 
