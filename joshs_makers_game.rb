@@ -78,7 +78,10 @@ end
 def stairs()
 	puts %{
 STAIRS
-You walk to the stairs and start climbing.
+You walk to the stairs and start climbing...
+}
+	sleep 2
+	puts %{
 The fourth floor is further than you thought, but adrenalin gets you there.
 }
   sleep 2
@@ -109,7 +112,10 @@ def lift_up()
 	sleep 2
 	puts %{
 IN THE LIFT
-Eventually a lift arrives and you slowly, but steadily ascend.
+Eventually a lift arrives and you slowly, but steadily ascend...
+}
+	sleep 3
+	puts %{
 The door opens at the fourth floor and you see someone who passed
 you in the lobby has made it up the stairs ahead of you.
 }
