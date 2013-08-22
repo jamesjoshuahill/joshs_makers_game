@@ -32,6 +32,7 @@ def outside()
 OUTSIDE
 Well done you navigated London transport.
 You are outside 25 City Road. Huh, looks like it's called Epworth House.
+
 Do you want to go in?
 (e.g. type 'go in')
 
@@ -54,6 +55,7 @@ LOBBY
 You walk into the Lobby and say hello to the security guard.
 You say you'd like to go up to Makers Academy and smile self-consciously.
 The guard says there's no need to sign in and Makers is on the fourth floor.
+
 Do you want to take the stairs or the lift?
 
 }
@@ -79,14 +81,20 @@ STAIRS
 You walk to the stairs and start climbing.
 The fourth floor is further than you thought, but adrenalin gets you there.
 }
+  sleep 2
   reception()
 end
 
 def lift_wait()
 	puts %{
 WAITING FOR A LIFT
-You press the lift button. It lights up and you wait for ages.
-Someone else arrives and presses the other lift button. Oh, two buttons.
+You press the lift button. It lights up and you wait...
+}
+	sleep 3
+	puts %{
+Someone else arrives and presses the other lift button.
+Oh, there are two buttons.
+
 Do you want to wait for a lift, or take the stairs?
 
 }
@@ -98,12 +106,14 @@ Do you want to wait for a lift, or take the stairs?
 end
 
 def lift_up()
+	sleep 2
 	puts %{
 IN THE LIFT
 Eventually a lift arrives and you slowly, but steadily ascend.
 The door opens at the fourth floor and you see someone who passed
 you in the lobby has made it up the stairs ahead of you.
 }
+	sleep 2
 	reception()
 end
 
