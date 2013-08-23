@@ -166,7 +166,7 @@ end
 
 def end_game(why="Uh oh!")
 	puts "\n#{why}\n---------------------------------------\n"
-	Process.exit(0)
+	#Process.exit(0)
 end
 
 start_game
